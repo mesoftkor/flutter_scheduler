@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_scheduler/screen/home_screen.dart';
 import 'dart:developer';
 import 'package:table_calendar/table_calendar.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    home: HomeScreen(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
