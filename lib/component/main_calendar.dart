@@ -3,11 +3,21 @@ import 'package:flutter_scheduler/const/colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class MainCalendar extends StatelessWidget {
-  const MainCalendar({super.key});
+  final OnDaySelected onDaySelected;
+  final DateTime selectedDate;
+  const MainCalendar({
+    required this.onDaySelected,
+    required this.selectedDate,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return TableCalendar(
+    return TableCalendar(ㄴ
+      onDaySelected: onDaySelected,
+      selectedDayPredicate: (date) =>
+          date.year == selectedDate.year &&
+          date.month == selectedDate.month &&
+          date.day == selectedDate.day,
       focusedDay: DateTime.now(),
       firstDay: DateTime(1900, 1, 1),
       lastDay: DateTime(2500, 1, 1),
