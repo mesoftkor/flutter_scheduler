@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_scheduler/screen/home_screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'dart:developer';
 import 'package:table_calendar/table_calendar.dart';
 
-void main() {
+void main() async {
+  //https://jake-seo-dev.tistory.com/666
+  WidgetsFlutterBinding.ensureInitialized();
+  //https://jake-seo-dev.tistory.com/667
+  await initializeDateFormatting('ko_KR', ""); //flutter가 업데이트 되면서 인자가 추가됨
+
   runApp(MaterialApp(
     home: HomeScreen(),
   ));

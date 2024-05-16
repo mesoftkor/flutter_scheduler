@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             context: context,
             isDismissible: true,
             builder: (_) => ScheduleBottomSheet(),
+            isScrollControlled: true, //스크롤이 가능하도록 변경
           );
         },
         child: const Icon(
