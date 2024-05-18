@@ -4,11 +4,20 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'dart:developer';
 import 'package:table_calendar/table_calendar.dart';
 
+//데이터베이스 연결을 위한 import
+import 'package:flutter_scheduler/database/drift_database.dart';
+import 'package:get_it/get_it.dart';
+
 void main() async {
   //https://jake-seo-dev.tistory.com/666
   WidgetsFlutterBinding.ensureInitialized();
   //https://jake-seo-dev.tistory.com/667
   await initializeDateFormatting('ko_KR', ""); //flutter가 업데이트 되면서 인자가 추가됨
+
+  final database = LocalDatabase(); // 데이터베이스 생성하기
+
+  //GetIt에 데이터베이스 변수 주입하기?? 나중에 GetIt이 뭔지 registerSingleton이 뭔지 검색 필요?????
+  GetIt.I.registerSingleton<LocalDatabase>(database);
 
   runApp(MaterialApp(
     home: HomeScreen(),

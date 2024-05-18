@@ -15,6 +15,10 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
     final bottomInset =
         MediaQuery.of(context).viewInsets.bottom; //입력시 키보드가 차지하는 높이를 가져오기
 
+    //키보드가 차지 하는 높이를 계산해서 bottomSheet의 높이를 지정하는 방법
+    //1. 키보드가 차지하는 높이를 저장 : MediaQuery.of(context).viewInsets.bottom
+    //2. bottomSheet에서 표시할 크기가 화면의 절반이므로 화면 전체 height의 반 + 키보드 높이로 높이를 지정
+    //3. 아래 padding 값을 키보드 높이만큼 지정하여 해당 부분에 UI가 겹치지 않도록 처리.
     return SafeArea(
       child: Container(
         height: MediaQuery.sizeOf(context).height / 2 +
@@ -54,7 +58,7 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
                 ),
               ),
               SizedBox(
-                width: double.infinity,
+                width: double.infinity, //가로 전체 길이를 차지하도록 설정
                 child: ElevatedButton(
                   onPressed: onSavePressed,
                   style: ElevatedButton.styleFrom(
