@@ -16,7 +16,10 @@ void main() async {
 
   final database = LocalDatabase(); // 데이터베이스 생성하기
 
-  //GetIt에 데이터베이스 변수 주입하기?? 나중에 GetIt이 뭔지 registerSingleton이 뭔지 검색 필요?????
+  //GetIt에 데이터베이스 변수 주입하기
+  //get_it 의존성주입(DI)용 패키지를 사용하여 database 를 state로 관리(전역 변수처럼 선언하여 프로젝트 전역에서 접근이 가능하도록 작업)
+  //get_it.I 인스턴스 생성
+  //registerSingleton state로 static처럼 1개만 생성
   GetIt.I.registerSingleton<LocalDatabase>(database);
 
   runApp(MaterialApp(

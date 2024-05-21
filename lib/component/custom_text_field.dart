@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_scheduler/const/colors.dart';
 
-class CustomTExtField extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String label;
   final bool isTime;
+  final FormFieldSetter<String> onSaved;
+  final FormFieldValidator<String> validator;
 
-  const CustomTExtField({required this.label, required this.isTime, super.key});
+  const CustomTextField({
+    required this.label,
+    required this.isTime,
+    required this.onSaved,
+    required this.validator,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +35,8 @@ class CustomTExtField extends StatelessWidget {
         Expanded(
           flex: isTime ? 0 : 1,
           child: TextFormField(
+            onSaved: onSaved,
+            validator: validator,
             cursorColor: Colors.grey,
             maxLines: isTime ? 1 : null, //null은 최대줄수 제한 없음
             expands: !isTime, //크기를 부모크기만큼 키울지 여부
